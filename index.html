@@ -62,12 +62,70 @@
                 <!-- <a class="hero-button" href="">Заказать услугу</a> -->
                 <button class="hero-button"  data-modal-open>Заказать услугу</button>       
             </div>
-            
+           
             <div class="backdrop is-hidden" data-modal>
                 <div class="modal">
-                    <button class="modal-close" data-modal-close>Close</button>
+                    
+                    <form class="order js-speaker-form">
+                        <h2 class="order-form-title">Оставьте свои данные, мы вам перезвоним</h2>
+                        <div class="order-form-field">
+                            <label for="name" class="order-label">Имя</label>
+                            <input type="text" class="form-input" name="name" id="name" placeholder=" ">
+                            <svg class="form-icon" width="18" height="18">
+                                <use href="./image/sprite.svg#icon-person-black"></use>  
+                            </svg>
+                        </div>
+                        <div class="order-form-field">
+                            <label for="tel" class="order-label">Телефон</label>
+                            <input type="tel" class="form-input" name="tel" id="tel" placeholder=" ">
+                            <svg class="form-icon" width="18" height="18">
+                                <use href="./image/sprite.svg#icon-phone-black"></use>  
+                            </svg>
+                        </div>
+                        <div class="order-form-field">
+                            <label for="mail" class="order-label">Почта</label>
+                            <input type="email" class="form-input" name="mail" id="mail" placeholder=" ">
+                            <svg class="form-icon" width="18" height="18">
+                                <use href="./image/sprite.svg#icon-email-black"></use>  
+                            </svg>
+                        </div>
+                        <div class="order-form-comment">
+                            <label for="textarea" class="order-label">Комментарий</label>
+                            <textarea 
+                                class="textarea" 
+                                name="textarea" 
+                                id="textarea" 
+                                rows="3" 
+                                placeholder="Введите текст"
+                                ></textarea>
+                        </div>
+                        <div class="order-form-agreement">
+                            
+                            <input class="checkbox" type="checkbox" name="agreement" id="agreement">
+                            <svg class="icon-uncheck" width="15" height="16">
+                                <use href="./image/sprite.svg#icon-vector"></use>  
+                            </svg>
+                            <label for="agreement" class="order-agreement">Соглашаюсь с рассылкой и принимаю 
+                                <a href="" class="contract">Условия договора</a></label>
+                        </div>
+
+                        <button class="submit-button" type="submit">
+                            Отправить
+                        </button>
+                        
+                    </form>
+
+
+                    <button class="modal-close" data-modal-close>
+                        <svg class="icon-close" width="30" height="30">
+                            <use href="./image/sprite.svg#icon-close-black"></use>  
+                        </svg>
+                    </button>
                 </div>
             </div>
+            
+            
+            
         </section>
         <!--секция 1 - наши особенности-->
         <section class="section">
@@ -343,12 +401,32 @@
             </div>
             <div class="subscribe">
                 <h3 class="subscribe-title">Подпишитесь на рассылку</h3>
-                <button class="subscribe-button">Подписаться 
-                </button>
+                <form class="subscribe-form">
+                    <div class="subscribe-email">
+                        <label>
+                            <input type="email" name="email" placeholder="E-mail">
+                        </label>
+                    </div>
+                    <button class="subscribe-button">Подписаться 
+                    </button>
+                </form>
+                
             </div>
         </div>    
     </footer>
+    <script>
+        (() => {
+            document
+                .querySelector('.js-speaker-form')
+                .addEventListener('submit', e => {
+                    e.preventDefault();
 
+                    new FormData(e.currentTarget).forEach((value, name) =>
+                    console.log(`${name}: ${value}`),
+                );
+            });
+        })();
+    </script>
     <script src="./js/modal.js"></script>
 </body>
 </html>
